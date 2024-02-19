@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
  
 THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
@@ -7,7 +7,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Akanksha Acharya
  
 Further Information:
 http://cns.utexas.edu/fri
@@ -17,102 +17,160 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+Used in order to determine whether someone is more likely to have a cold or allergies based on symptoms. 
  
 Known Issues:
-blah, blah, blah, blah
+N/A
 
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
-	
-   <head> 
-      <title>Hello World</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
-   </head> 
+
+<head>
+	<title>Hello World</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="w3.css">
+	<link rel="stylesheet" href="w3-colors-flat.css">
+</head>
 
 
-<script>
-        var allergy_count = 0;
-        var cold_count = 0;
+<script> // counts the number of times each button is clicked
+	var allergy_count = 0;
+	var cold_count = 0;
+
+	function allergyAdd() {
+		allergy_count = allergy_count + 1; //increments counts
+	}
+
+	function coldAdd() {
+		cold_count = cold_count + 1; //increments counts
+	}
+
+	function showResults() { //displays the final results for each 
+		var allergyPercent = 0;
+		var coldPercent = 0;
+		var total = 4;
+
+		allergyPercent = (allergy_count / total) * 100; //calculates percentage allergy
+		coldPercent = (cold_count / total) * 100; //calculates percentage cold
+
+		var resultText = "Your probability of having allergies is " + allergyPercent + "%. Your probability of having a cold is " + coldPercent + "%."; //puts the percent into a sentence
+		var resultParagraph = document.getElementById("returnResults"); // gets the returnResults paragraph element
+		resultParagraph.innerHTML = resultText; // sets the inner html of the paragraph to the previously created sentence
+	}
+
+</script>
 
 
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
-		alert(allergy_count);
 
-        }
+<style>
+	.body {
+		margin: 0em;
+	}
 
-        function coldAdd(){
-            cold_count = cold_count + 1;
-        }
+	.page {
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: -100vw;
+		overflow-y: auto;
+		z-index: 0;
+		background-color: hsl(0, 0%, 100%);
+	}
 
-  </script>
-
-
-
-<style>	
-.body {
-     margin: 0em;
-}
-
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
-}
-
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-}
+	.page:target {
+		left: 0vw;
+		z-index: 1;
+	}
 </style>
 
 <body>
-<div id="header" class="w3-container w3-flat-carrot">
-	<h1>Cold or Allergies?</h1>
-</div>
-	
-<div id="content" class="w3-container">
-	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
-	
-	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
-	
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-
-<div class="page" id="one">
-	<div id="header" class="w3-container w3-flat-carrot">
-		<h1>Question 1</h1>
+	<div id="header" class="w3-container w3-flat-carrot"> <!-- introduction paragraphs-->
+		<h1>Cold or Allergies?</h1>
 	</div>
-	
-    	<div id="content" class="w3-container">
-        <p>Put Question 1 content here.</p>    
-    	</div>
-</div>
 
-<div class="page" id="two">
-	<div class="w3-container w3-flat-carrot">
-		<h1>Question 2</h1>
-	</div>
-	
 	<div id="content" class="w3-container">
-		<p>Content of page 2 goes here.</p>
-	</div>
-</div>	
+		<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to
+			find out!</p>
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
-</footer>
+		<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+
+		<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY
+			Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and
+			should not be considered a product -- it is for entertainment purposes only. Any user of this code does so
+			at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for
+			anything related to this code.</p>
+
+		<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+	</div>
+
+	<div class="page" id="one"> <!-- makes the first page -->
+		<div id="header" class="w3-container w3-flat-carrot"> <!-- makes the header -->
+			<h1>Question 1</h1> <!-- title of first header-->
+		</div>
+
+		<div id="content" class="w3-container">
+			<p>Are your eyes watery or itchy?</p> <!-- first question -->
+			<a href="#two" class="w3-btn w3-black" onclick="allergyAdd()"> Yes </a> <!-- assigns roles to buttons-->
+			<a href="#two" class="w3-btn w3-black" onclick="coldAdd()"> No </a> <!-- assigns roles to buttons-->
+		</div>
+	</div>
+
+	<div class="page" id="two"> <!-- makes the second page -->
+		<div class="w3-container w3-flat-carrot"> <!-- makes the header -->
+			<h1>Question 2</h1>
+		</div>
+
+		<div id="content" class="w3-container">
+			<p>Do you have a fever?</p>
+			<a href="#three" class="w3-btn w3-black" onclick="coldAdd()"> Yes </a> <!-- assigns roles to buttons-->
+			<a href="#three" class="w3-btn w3-black" onclick="allergyAdd()"> No </a><!-- assigns roles to buttons-->
+		</div>
+	</div>
+
+	<div class="page" id="three"> <!-- makes the third page -->
+		<div class="w3-container w3-flat-carrot"> <!-- makes the header -->
+			<h1>Question 3</h1>
+		</div>
+
+		<div id="content" class="w3-container">
+			<p>Do you have a sore throat?</p>
+			<a href="#four" class="w3-btn w3-black" onclick="coldAdd()"> Yes </a> <!-- assigns roles to buttons-->
+			<a href="#four" class="w3-btn w3-black" onclick="allergyAdd()"> No </a> <!-- assigns roles to buttons-->
+		</div>
+	</div>
+
+	<div class="page" id="four"> <!-- makes the fourth page -->
+		<div class="w3-container w3-flat-carrot"> <!-- makes the header -->
+			<h1>Question 4</h1>
+		</div>
+
+		<div id="content" class="w3-container">
+			<p>Are your symptoms seasonal or chronic?</p>
+			<a href="#results" class="w3-btn w3-black" onclick="allergyAdd()"> Yes </a> <!-- assigns roles to buttons-->
+			<a href="#results" class="w3-btn w3-black" onclick="coldAdd()"> No </a> <!-- assigns roles to buttons-->
+		</div>
+	</div>
+
+	<div class="page" id="results"> <!-- makes the results page -->
+		<div class="w3-container w3-flat-carrot"> <!-- makes the header -->
+			<h1>Results</h1>
+		</div>
+
+		<div id="content" class="w3-container">
+			<p>Do you want to know your results?</p>
+			<a href="#results" class="w3-btn w3-black" onclick="showResults()"> Yes </a>
+			<!-- assigns roles to buttons-->
+			<p id="returnResults"> </p> <!-- creates empty paragraph to write results to-->
+		</div>
+	</div>
+
+	<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>
 
 </body>
+
 </html>
